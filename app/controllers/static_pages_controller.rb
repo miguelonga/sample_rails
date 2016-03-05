@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
-    @micropost = current_user.microposts.build if logged_in?
-    @feed_items = current_user.microposts
+    if logged_in?
+      @micropost  = current_user.microposts.build
+      @feed_items = current_user.feed
+    end
   end
 
   def help
